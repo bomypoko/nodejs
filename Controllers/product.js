@@ -1,46 +1,46 @@
-exports.read = async(req,res) =>{
-    res.send('hello controller read')
-}
+// exports.read = async(req,res) =>{
+//     res.send('hello controller read')
+// }
 
-exports.list = async(req,res) => {
-    try {
+// exports.list = async(req,res) => {
+//     try {
 
-        res.send('Hello list')
+//         res.send('Hello list')
 
-    }catch(err) {
-        console.log(err)
-        res.status(500).send('Server Down')
-    }
-}
-exports.create = async(req,res) => {
-    try {
+//     }catch(err) {
+//         console.log(err)
+//         res.status(500).send('Server Down')
+//     }
+// }
+// exports.create = async(req,res) => {
+//     try {
 
-        res.send('Hello Create')
+//         res.send('Hello Create')
 
-    }catch(err) {
-        console.log(err)
-        res.status(500).send('Server Down')
-    }
-}
+//     }catch(err) {
+//         console.log(err)
+//         res.status(500).send('Server Down')
+//     }
+// }
 
-exports.update = async(req,res) => {
-    try {
+// exports.update = async(req,res) => {
+//     try {
 
-        res.send('Hello update')
+//         res.send('Hello update')
 
-    }catch(err) {
-        console.log(err)
-        res.status(500).send('Server Down')
-    }
-}
+//     }catch(err) {
+//         console.log(err)
+//         res.status(500).send('Server Down')
+//     }
+// }
 
-exports.remove = async(req,res) => {
-    try {
+// exports.remove = async(req,res) => {
+//     try {
 
-        res.send('Hello Delete')
+//         res.send('Hello Delete')
 
-    }catch(err) {
-        console.log(err)
-        res.status(500).send('Server Down')
-    }
-}
+//     }catch(err) {
+//         console.log(err)
+//         res.status(500).send('Server Down')
+//     }
+// }
