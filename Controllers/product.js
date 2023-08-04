@@ -1,46 +1,35 @@
-// exports.read = async(req,res) =>{
-//     res.send('hello controller read')
-// }
-
-// exports.list = async(req,res) => {
-//     try {
-
-//         res.send('Hello list')
-
-//     }catch(err) {
-//         console.log(err)
-//         res.status(500).send('Server Down')
-//     }
-// }
-// exports.create = async(req,res) => {
-//     try {
-
-//         res.send('Hello Create')
-
-//     }catch(err) {
-//         console.log(err)
-//         res.status(500).send('Server Down')
-//     }
-// }
-
-// exports.update = async(req,res) => {
-//     try {
-
-//         res.send('Hello update')
-
-//     }catch(err) {
-//         console.log(err)
-//         res.status(500).send('Server Down')
-//     }
-// }
-
-// exports.remove = async(req,res) => {
-//     try {
-
-//         res.send('Hello Delete')
-
-//     }catch(err) {
-//         console.log(err)
-//         res.status(500).send('Server Down')
-//     }
-// }
+exports.read = async(req,res) => {
+    try {
+        await res.send('PlayStation5 , SonyTV , MotorBike , Shoe , Shirt , Ski')
+    } catch (error) {
+        res.send('The server is no responding').send(500)
+    }
+}
+exports.list = async(req , res) => {
+    try {
+        await res.send('Football')
+    } catch (error) {
+        res.send('The server is no responding').send(500)
+    }
+}
+exports.update = async(req ,res) => {
+    try {
+        await res.send('Update Complete')
+    } catch (error) {
+        res.send(500).send('the server is not responding')
+    }
+}
+exports.create = async(req,res) => {
+    try {
+        await res.send('Your Account is Created')
+    } catch (error) {
+        res.send(500).send('The server is not responding')
+    }
+}
+exports.remove = async(req,res) => {
+    try {
+        await res.send('Your Account Was Deleted')
+    } catch (error) {
+        res.send('500').send('The server is not responding')
+    }
+}
