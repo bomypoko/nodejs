@@ -1,18 +1,19 @@
 const express = require('express')
+const morgan = require('morgan')
+const cors = require('cors')
+const bodyParse = require('body-parser')
 
-// const morgan = require('morgan')
-// const cors = require('cors')
-// const bodyParse = require('body-parser')
-
+const connectDB = require('./Config/db')
 
 
 const app = express()
 
+connectDB()
 
-// app.use(morgan('dev'))
-// app.use(cors())
-// app.use(bodyParse.json({ limit: '10mb'}))
-// const bodyParser = require('body-parser')
+app.use(morgan('dev'))
+app.use(cors())
+app.use(bodyParse.json({ limit: '10mb'}))
+const bodyParser = require('body-parser')
 
 const { readdirSync } = require('fs')
 
