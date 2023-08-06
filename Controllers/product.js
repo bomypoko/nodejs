@@ -2,38 +2,40 @@
 
 const Products = require('../Models/Product')
 
-exports.read = async(req,res) => {
+exports.list = async(req , res) => {
     try {
-        await res.send('PlayStation5 , SonyTV , MotorBike , Shoe , Shirt , Ski')
+        const productlist = await Products.find({}).exec();
+        res.send(productlist)
     } catch (error) {
         res.send('The server is no responding').send(500)
     }
 }
-exports.list = async(req , res) => {
+
+
+exports.read = async(req,res) => {
+    // อันนี้ต้องหา id ด้วย จะเป็นข้อมูลที่มาจาก URL
     try {
-        await res.send('Football')
+        const id = req.params.id
+        const productfind = await Products.findOne({_id: id}).exec();
+        res.send(productfind)
+        
     } catch (error) {
-        res.send('The server is no responding').send(500)
+        res.status(500).send('server is error')
+        
     }
 }
 
 exports.update = async(req ,res) => {
+    
     try {
-        await res.send('Update Complete')
+        const id = req.params.id
+        const productupdate = await Products.
+            findOneAndUpdate({ _id: id },req.body, { new: true}).exec()
+            res.send(productupdate)
     } catch (error) {
-        res.send(500).send('the server is not responding')
+        
     }
 }
-
-// กำลังจะเชื่อมต่อกับฐานข้อมูล
-
-// exports.create = async(req,res) => {
-//     try {
-//         await res.send('Your Account is Created')
-//     } catch (error) {
-//         res.send(500).send('The server is not responding')
-//     }
-// }
 
 // Save Data to Mongodb
 exports.create = async(req,res) => {

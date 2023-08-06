@@ -4,8 +4,8 @@ const router = express.Router()
 const { read , list , create , remove , update  } = require('../Controllers/product')
 
 // ดึงข้อมูลทั้งหมด
-router.get('/product' , read)
-router.get('/product/:id' , list)
+router.get('/product/:id' , read)
+router.get('/product/', list)
 
 // ส่งข้อมูลเข้ามาบันทึก
 router.post('/product' , create)
