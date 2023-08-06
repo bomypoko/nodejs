@@ -9,7 +9,7 @@ const productSchema = mongoose.Schema({
     price:{
         type:Number
     }
-},{timestamps: true})
+},{ timestamps: true})
 
 
 module.exports = mongoose.model('products',productSchema)

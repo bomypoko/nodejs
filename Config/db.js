@@ -1,10 +1,10 @@
 const mongoose = require('mongoose')
 
-const connectDB = async() => {
+const connectDB = async () => {
     try {
-        await mongoose.connect('mongodb://127.0.0.1:27017/userbom')
+        await mongoose.connect('mongodb://127.0.0.1:27017/roitai')
         console.log('DB Connected')
-    }   catch(err) {
+    } catch (err) {
         console.log(err)
     }
 }
