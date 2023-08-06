@@ -16,6 +16,7 @@ exports.list = async(req , res) => {
         res.send('The server is no responding').send(500)
     }
 }
+
 exports.update = async(req ,res) => {
     try {
         await res.send('Update Complete')
@@ -23,13 +24,30 @@ exports.update = async(req ,res) => {
         res.send(500).send('the server is not responding')
     }
 }
+
+// กำลังจะเชื่อมต่อกับฐานข้อมูล
+
+// exports.create = async(req,res) => {
+//     try {
+//         await res.send('Your Account is Created')
+//     } catch (error) {
+//         res.send(500).send('The server is not responding')
+//     }
+// }
+
+// Save Data to Mongodb
 exports.create = async(req,res) => {
     try {
-        await res.send('Your Account is Created')
+        console.log(req.body)
+        const createproduct = await Products(req.body).save()
+        res.send(createproduct)
+
     } catch (error) {
-        res.send(500).send('The server is not responding')
+        console.log('the server is not responding')
     }
 }
+
+
 exports.remove = async(req,res) => {
     try {
         await res.send('Your Account Was Deleted')
