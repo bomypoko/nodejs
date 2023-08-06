@@ -1,3 +1,7 @@
+
+
+const Products = require('../Models/Product')
+
 exports.read = async(req,res) => {
     try {
         await res.send('PlayStation5 , SonyTV , MotorBike , Shoe , Shirt , Ski')
