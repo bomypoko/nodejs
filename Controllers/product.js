@@ -1,5 +1,4 @@
 
-
 const Products = require('../Models/Product')
 
 exports.list = async(req , res) => {
@@ -18,13 +17,13 @@ exports.read = async(req,res) => {
         const id = req.params.id
         const productfind = await Products.findOne({_id: id}).exec();
         res.send(productfind)
+       
         
     } catch (error) {
         res.status(500).send('server is error')
         
     }
 }
-
 exports.update = async(req ,res) => {
     
     try {
@@ -51,9 +50,9 @@ exports.create = async(req,res) => {
 
 
 exports.remove = async(req,res) => {
-    try {
-        await res.send('Your Account Was Deleted')
-    } catch (error) {
-        res.send('500').send('The server is not responding')
-    }
+
+    const id = req.params.id
+    const productdelete = await Products.findOneAndDelete({ _id: id}).exec()
+    res.send(productdelete)
+ 
 }

@@ -1,9 +1,11 @@
 const express = require('express')
 const router = express.Router()
 
-router.get('/auth' , (req,res) => {
-    res.send('Login , Passport')
-})
+
+const { createUser } = require('../Controllers/auth')
+
+
+router.get('/auth',createUser )  
 
 
 

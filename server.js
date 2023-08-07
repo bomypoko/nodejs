@@ -13,7 +13,7 @@ connectDB()
 app.use(morgan('dev'))
 app.use(cors())
 app.use(bodyParse.json({ limit: '10mb'}))
-const bodyParser = require('body-parser')
+
 
 const { readdirSync } = require('fs')
 
