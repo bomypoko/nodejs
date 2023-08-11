@@ -1,4 +1,3 @@
-
 const Products = require('../Models/Product')
 
 exports.list = async(req , res) => {

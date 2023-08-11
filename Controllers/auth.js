@@ -1,7 +1,25 @@
+const Users = require('../Models/authentication')
+
+
 
 exports.createUser = async( req , res ) => {
-    res.send('hello Auth')
+    try {
+        const newuser = await Users(req.body).save()
+        res.send(newuser)
+    } catch (error) {
+        console.log(500).send('the server is not responding')
+    }
 }
+exports.userid = async(req,res) => {
+    try {
+        await res.send('Ratchasri Kidking')
+    } catch (error) {
+        res.send(500).sent('the server is not responding')
+    }
+}
+
+
+
 
 // exports.createUser = async( req,res) => {
 //     console.log(req.body)
