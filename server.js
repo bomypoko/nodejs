@@ -26,3 +26,5 @@ readdirSync('./Routes').map(item => {
 app.listen(2500 , () => {
     console.log('This sever is running on port 2500')
 })
+
+// Finished Project
