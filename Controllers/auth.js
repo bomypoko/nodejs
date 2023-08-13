@@ -1,22 +1,50 @@
-const Users = require('../Models/authentication')
 
-
-
-exports.createUser = async( req , res ) => {
+exports.register = async(req,res)=>{
     try {
-        const newuser = await Users(req.body).save()
-        res.send(newuser)
+        res.send('hello register')
     } catch (error) {
-        console.log(500).send('the server is not responding')
+        console.log('err')
+        res.status(500)
+        res.send('the server is not responding')
+        
     }
 }
-exports.userid = async(req,res) => {
+exports.login = async(req,res)=>{
     try {
-        await res.send('Ratchasri Kidking')
+        res.send('hello register')
     } catch (error) {
-        res.send(500).sent('the server is not responding')
+        console.log('err')
+        res.status(500)
+        res.send('the server is not responding')
+        
     }
 }
+
+
+
+
+
+
+
+// const Users = require('../Models/authentication')
+
+
+
+// exports.createUser = async( req , res ) => {
+//     try {
+//         const newuser = await Users(req.body).save()
+//         res.send(newuser)
+//     } catch (error) {
+//         console.log(500).send('the server is not responding')
+//     }
+// }
+// exports.userid = async(req,res) => {
+//     try {
+//         await res.send('Ratchasri Kidking')
+//     } catch (error) {
+//         res.send(500).sent('the server is not responding')
+//     }
+// }
 
 
 
