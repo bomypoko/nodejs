@@ -6,15 +6,15 @@ exports.register = async(req,res)=>{
         //Destructuring Username and Password
         const { username , password } = req.body
         // ต้องใช้ var เพราะ User มีการเปลี่ยนแปลงค่า ถ้าเป็น const มันจะเป็นค่าคงที่
-        var user = await User.findOne({username})
+        const existingUser = await User.findOne({username})
        
         // Check new user if there is exist.
-        if(user){
+        if(existingUser){
             return res.send('This user is already exists!!').status(400)
         }
         //2 Encrypt password
         const salt = await bcrypt.genSalt(10)
-        user = new User({
+        const user = new User({
             username,
             password
         })
