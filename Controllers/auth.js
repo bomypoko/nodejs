@@ -9,9 +9,11 @@ exports.register = async(req,res)=>{
         const existingUser = await User.findOne({username})
        
         // Check new user if there is exist.
+
         if(existingUser){
             return res.send('This user is already exists!!').status(400)
         }
+       
         //2 Encrypt password
         const salt = await bcrypt.genSalt(10)
         const user = new User({
