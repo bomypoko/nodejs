@@ -3,7 +3,8 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
 
-// Start Register 
+///----------------------- Start Register 
+
 exports.register = async(req,res)=>{
     try {
         //Destructuring Username and Password
@@ -42,24 +43,24 @@ exports.register = async(req,res)=>{
 
 exports.login = async(req,res) => {
     try {
-        // 1 Check User if there is user in system already
-        const { name , password } = req.body
-        var user = await User.findOneAndUpdate({ name }, { new: true })
-        console.log(user)
+        // 1 Check User if there is user in the DB and update login Timestampt
+        const { name , password } = req.body;
+        var user = await User.findOneAndUpdate({ name }, { $set: { lastLogin: new Date() } }, { new: true })
         
-
         if(user) {
-            const isMatch = await bcrypt.compare(password,user.password)
+            const isMatch = await bcrypt.compare(password, user.password); 
 
-            if(!isMatch){
-                return res.status(400).send('password is not Invalid')
+            if(!isMatch) {
+                return res.status(400).send('invalid password')
             }
         }
-        res.send('hello login')
+
+        console.log(user.password)
+        res.send('Welcome new user')
         
     } catch (error) {
         console.log(error)
-        res.send(500).send('the server is not responding ')
+        res.status(500).send('An error occurred on the server');
     }
 
     
