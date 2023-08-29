@@ -3,8 +3,6 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
 
-///----------------------- Start Register 
-
 exports.register = async(req,res)=>{
     try {
         //Destructuring Username and Password
@@ -15,7 +13,7 @@ exports.register = async(req,res)=>{
         // Check new user if there is exist.
 
         if(existingUser){
-            return res.send('This user is already exists!!').status(400)
+            return res.send('This user is already exists!! Please Login' )
         }
        
         //2 Encrypt password
@@ -37,9 +35,8 @@ exports.register = async(req,res)=>{
         res.send('the server is not responding')
     }
 }
-// End Register
 
-/// ---------------- Start Login ----------/// 
+
 
 exports.login = async(req,res) => {
     try {
