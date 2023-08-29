@@ -11,7 +11,7 @@ exports.register = async(req,res)=>{
         const { username , password } = req.body
         var exisTingUser = await User.findOne({ username })
         if(exisTingUser){
-            res.send('Existing User')
+            return res.send('Existing Username')
         }
 
         const salt = await bcrypt.genSalt(5)
@@ -20,12 +20,8 @@ exports.register = async(req,res)=>{
             password
         })
         exisTingUser.password = await bcrypt.hash(password, salt)
-        console.log(exisTingUser)
-
-
-
-
-        res.send(req.body)
+        await exisTingUser.save()
+        res.send('Register Successful')
 
        
 
