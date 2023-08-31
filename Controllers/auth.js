@@ -31,18 +31,32 @@ exports.register = async(req,res)=>{
   
 }
 exports.login = async(req,res) => {
-
+            // Check User Password
     try {
         const {username , password} = req.body
         const existingUser = await User.findOneAndUpdate({ username}, {new: true})
-        if(existingUser) {
-            const isMatch = await bcrypt.compare(password, existingUser.password)
+
+            if(existingUser) {
+                const isMatch = await bcrypt.compare(password, existingUser.password)
             
-            if(!isMatch) {
+                if(!isMatch) {
                 return res.send('Invalid Password')
+                }
+                 // 2. payload
+                var payload={
+                    existingUser:{
+                    name: existingUser.username
+                      }
+                     }
+                // 3. generate Token
+                jwt.sign(payload, 'jwtsecret' ,{ expiresIn: 10} , (err,token) => {
+                    if(err) throw err;
+                    res.json({token, payload })
+                })
+            }else {
+                return res.status(400).send('User not Found!!!')
             }
-        }
-        res.send('Welcome `${Username}`')
+        
     } catch (error) {
         console.log(error)
         res.status(500).send('the server is not responding')
