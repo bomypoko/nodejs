@@ -47,9 +47,9 @@ exports.login = async(req,res) => {
                     existingUser:{
                     name: existingUser.username
                       }
-                     }
+                }
                 // 3. generate Token
-                jwt.sign(payload, 'jwtsecret' ,{ expiresIn: 10} , (err,token) => {
+                jwt.sign(payload, 'jwtsecret', { expiresIn: 20} , (err, token) => {
                     if(err) throw err;
                     res.json({token, payload })
                 })
