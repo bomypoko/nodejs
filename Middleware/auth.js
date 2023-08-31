@@ -10,6 +10,7 @@ exports.auth = async(req, res, next) =>{
         }
         const decoded = jwt.verify(token,'jwtsecret')
         console.log(decoded)
+        req.user = decoded.user
 
         next();
         
